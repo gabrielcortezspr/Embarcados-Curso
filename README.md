@@ -53,3 +53,9 @@ Todos os códigos estão comentados por blocos para facilitar o entendimento.
 ## Dúvidas ou sugestões?
 
 Abra uma issue ou envie um pull request!
+
+---
+
+## Licença
+
+[MIT](LICENSE)
