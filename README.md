@@ -1,61 +1,55 @@
-<div align="center">
-	<h1>Curso de Embarcados: ESP32 & Arduino</h1>
-	<img src="https://platformio.org/images/platformio-logo.svg" alt="PlatformIO" width="120"/>
-	<br/>
-	<b>Repositório oficial do curso de embarcados para iniciantes e intermediários</b>
-</div>
+# Embedded Systems Course: ESP32 & Arduino
 
----
+![C++](https://img.shields.io/badge/C%2B%2B-Arduino-00979D?logo=arduino&logoColor=white)
+![ESP32](https://img.shields.io/badge/ESP32-Espressif-E7352C?logo=espressif&logoColor=white)
+![PlatformIO](https://img.shields.io/badge/PlatformIO-build-F5822A?logo=platformio&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## Como criar seu próprio projeto no PlatformIO (VS Code)
+Hands-on material for an introductory embedded systems course I put together: **23 commented
+sketches** for Arduino UNO and ESP32, going from blinking an LED to interrupts, deep sleep,
+JSON and MQTT.
 
-1. Instale o [VS Code](https://code.visualstudio.com/) e a extensão [PlatformIO IDE](https://platformio.org/install/ide?install=vscode)
-2. Abra o VS Code e clique no ícone do PlatformIO (formato de formiga) na barra lateral
-3. Clique em "New Project"
-4. Dê um nome ao projeto, escolha a placa (ex: Arduino Uno, ESP32 DevKit, etc) e o framework (Arduino)
-5. Clique em "Finish" e aguarde a criação do projeto
-6. Coloque seus códigos na pasta `src/` do projeto criado
-7. Para compilar e enviar para a placa, use os botões de "Build" (martelo) e "Upload" (seta para a direita) na barra inferior do PlatformIO
-8. As Dependências dos códigos devem ser instaladas pelo próprio PlatformIO
+| Module | Sketches | Topics |
+|---|---|---|
+| [`01-basics`](01-basics) | 10 | GPIO, `delay`, serial I/O, loops, `switch` |
+| [`02-intermediate`](02-intermediate) | 11 | `millis()` non-blocking timing, `std::vector`, value mapping, ArduinoJson, ESP32 deep sleep and wake-up causes, external and timer interrupts (AVR registers) |
+| [`03-iot`](03-iot) | 2 | JSON over serial, MQTT over Wi-Fi with PubSubClient |
 
----
+Code comments are in Portuguese, written for students.
 
-## Sobre este repositório
+## Getting started
 
-Aqui você encontra três projetos independentes, cada um com vários exemplos práticos:
+Each module is a [PlatformIO](https://platformio.org/) project with `uno` and/or `esp32dev`
+environments. Every file in `src/` is a standalone sketch, so the project compiles one at a
+time; choose it in the module's `platformio.ini`:
 
-- **basico/** — Exemplos para quem está começando: piscar LED, leitura serial, lógica básica, laços, etc.
-- **intermediario/** — Exercícios com lógica mais avançada, uso de funções, comunicação serial, interrupções, timers, etc.
-- **iot/** — Exemplos de comunicação, IoT, uso de JSON, integração com brokers, etc.
+```ini
+[activity]
+file = atividade_05.cpp
+```
 
-Cada pasta é um projeto PlatformIO pronto para abrir no VS Code. Basta abrir a pasta desejada, selecionar o ambiente correto no `platformio.ini` e compilar qualquer arquivo da pasta `src/`.
+Then build, upload and open the serial monitor (or use the PlatformIO buttons in VS Code):
 
-Todos os códigos estão comentados por blocos para facilitar o entendimento.
+```bash
+cd 02-intermediate
+pio run -e esp32dev -t upload
+pio device monitor
+```
 
----
+No hardware? Most sketches run in the [Wokwi](https://wokwi.com/) simulator.
 
-## Ferramentas recomendadas
+## Recommended tools
 
-- [WOKWi](https://wokwi.com/) — Simulador online de Arduino e ESP32
-- [TINKERCAD](https://www.tinkercad.com/) — Simulador de circuitos e prototipagem
-- [VS Code](https://code.visualstudio.com/) — Editor de código recomendado
-- [PlatformIO](https://platformio.org/) — Ambiente de desenvolvimento para embarcados
-- [Fritzing](https://fritzing.org/) — Criação de diagramas eletrônicos
-- [MQTTX](https://mqttx.app/) — Cliente MQTT para testes de IoT
-- [Hercules](https://www.hw-group.com/software/hercules-setup-utility) — Terminal serial e TCP/UDP
-- [Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=pt_BR) — App Android para comunicação Bluetooth
-- [ScannerBLE (Conectar&Notificar)](https://play.google.com/store/apps/details?id=com.macdom.ble.blescanner&hl=pt_BR) — App Android para BLE
-- [Insomnia](https://insomnia.rest/download) — Testes de APIs REST
-- [Mosquitto Broker](https://mosquitto.org/) — Broker MQTT open source
+| Tool | Use |
+|---|---|
+| [VS Code](https://code.visualstudio.com/) + [PlatformIO IDE](https://platformio.org/install/ide?install=vscode) | Editor, build and upload |
+| [Wokwi](https://wokwi.com/) / [Tinkercad](https://www.tinkercad.com/) | Online Arduino/ESP32 and circuit simulators |
+| [Fritzing](https://fritzing.org/) | Wiring diagrams |
+| [MQTTX](https://mqttx.app/) / [Mosquitto](https://mosquitto.org/) | MQTT client and broker |
+| [Hercules](https://www.hw-group.com/software/hercules-setup-utility) | Serial and TCP/UDP terminal |
+| [Insomnia](https://insomnia.rest/download) | REST API testing |
+| [Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal) / [BLE Scanner](https://play.google.com/store/apps/details?id=com.macdom.ble.blescanner) | Bluetooth and BLE from an Android phone |
 
----
-
-## Dúvidas ou sugestões?
-
-Abra uma issue ou envie um pull request!
-
----
-
-## Licença
+## License
 
 [MIT](LICENSE)
