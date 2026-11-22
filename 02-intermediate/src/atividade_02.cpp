@@ -3,7 +3,7 @@
 // e calcular a média quando o usuário desejar.
 
 #include <Arduino.h>
-#include <StandardCplusplus.h>
+// On the ESP32 the C++ standard library (std::vector) is available natively.
 #include <vector>
 #include <iostream>
 
